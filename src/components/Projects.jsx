@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { FaGithub, FaExternalLinkAlt, FaServer, FaRobot, FaChartLine } from 'react-icons/fa'
+import { FaGithub, FaExternalLinkAlt, FaServer, FaRobot, FaChartLine, FaAws } from 'react-icons/fa'
 import { 
   SiKubernetes, 
   SiDocker, 
@@ -8,7 +8,6 @@ import {
   SiAnsible, 
   SiGithubactions,
   SiPython,
-  SiAws,
 } from 'react-icons/si'
 
 const Projects = () => {
@@ -47,7 +46,7 @@ const Projects = () => {
       description: 'Performance profiling and visualization tool for analyzing system bottlenecks and optimizing application performance. Essential for SRE troubleshooting.',
       image: '🔥',
       category: 'Monitoring',
-      technologies: [SiPython, SiAws],
+      technologies: [SiPython, FaAws],
       links: {
         github: 'https://github.com/shivam2003-dev',
       },
@@ -59,7 +58,7 @@ const Projects = () => {
       description: 'Terraform modules for AWS infrastructure provisioning and management. Enhanced reusability and consistency across multiple environments.',
       image: '🏗️',
       category: 'IaC',
-      technologies: [SiTerraform, SiAws, SiGithubactions],
+      technologies: [SiTerraform, FaAws, SiGithubactions],
       links: {
         github: 'https://github.com/shivam2003-dev',
       },

@@ -22,8 +22,6 @@ import {
   SiVault,
   SiJavascript,
   SiYaml,
-  SiBash,
-  SiPowerplatform,
 } from 'react-icons/si'
 
 const Skills = () => {
@@ -86,10 +84,10 @@ const Skills = () => {
       icon: FaPython,
       skills: [
         { name: 'Python', icon: FaPython, level: 90 },
-        { name: 'Bash', icon: SiBash, level: 95 },
+        { name: 'Bash', icon: FaCode, level: 95 },
         { name: 'JavaScript', icon: SiJavascript, level: 80 },
         { name: 'YAML', icon: SiYaml, level: 95 },
-        { name: 'PowerShell', icon: SiPowerplatform, level: 85 },
+        { name: 'PowerShell', icon: FaCode, level: 85 },
       ],
     },
     {

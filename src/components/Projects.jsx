@@ -82,7 +82,7 @@ const Projects = () => {
       description: 'Zabbix integration with PagerDuty, Teams, and email alerting. Comprehensive monitoring solution for production environments.',
       image: '📊',
       category: 'Monitoring',
-      technologies: [SiAws, SiPython],
+      technologies: [FaAws, SiPython],
       links: {
         github: 'https://github.com/shivam2003-dev',
       },

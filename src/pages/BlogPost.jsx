@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { blogPosts } from '../data/blogPosts'
 import { FaArrowLeft, FaCalendarAlt, FaClock, FaTag, FaUser } from 'react-icons/fa'
@@ -7,6 +7,7 @@ import ScrollProgress from '../components/ScrollProgress'
 
 const BlogPost = () => {
   const { slug } = useParams()
+  const navigate = useNavigate()
   const post = blogPosts.find(p => p.slug === slug)
 
   if (!post) {
@@ -260,13 +261,16 @@ const BlogPost = () => {
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {post.tags.map((tag, index) => (
-                    <span
+                    <motion.button
                       key={index}
-                      className="px-3 py-1 bg-primary-500/20 border border-primary-500/50 rounded-full text-sm text-primary-400"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={() => navigate('/#blog', { state: { filterTag: tag } })}
+                      className="px-3 py-1 bg-primary-500/20 border border-primary-500/50 rounded-full text-sm text-primary-400 hover:bg-primary-500/30 transition-colors cursor-pointer"
                     >
                       <FaTag className="inline mr-1 text-xs" />
                       {tag}
-                    </span>
+                    </motion.button>
                   ))}
                 </div>
               </header>

@@ -265,7 +265,15 @@ const BlogPost = () => {
                       key={index}
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      onClick={() => navigate('/#blog', { state: { filterTag: tag } })}
+                      onClick={() => {
+                        navigate('/', { state: { filterTag: tag } })
+                        setTimeout(() => {
+                          const blogSection = document.getElementById('blog')
+                          if (blogSection) {
+                            blogSection.scrollIntoView({ behavior: 'smooth' })
+                          }
+                        }, 100)
+                      }}
                       className="px-3 py-1 bg-primary-500/20 border border-primary-500/50 rounded-full text-sm text-primary-400 hover:bg-primary-500/30 transition-colors cursor-pointer"
                     >
                       <FaTag className="inline mr-1 text-xs" />

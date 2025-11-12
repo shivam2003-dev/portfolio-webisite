@@ -1,16 +1,14 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Link } from 'react-router-dom'
-import { FaBlog, FaCalendarAlt, FaClock, FaTag, FaExternalLinkAlt, FaBook, FaGraduationCap, FaFileAlt, FaRoute, FaArrowRight } from 'react-icons/fa'
-import { blogPosts, resources } from '../data/blogPosts'
-import { useState } from 'react'
+import { FaBlog, FaCalendarAlt, FaClock, FaTag, FaArrowRight } from 'react-icons/fa'
+import { blogPosts } from '../data/blogPosts'
 
 const Blog = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
-  const [activeTab, setActiveTab] = useState('posts')
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -67,43 +65,13 @@ const Blog = () => {
             </p>
           </motion.div>
 
-          {/* Tabs */}
-          <motion.div variants={itemVariants} className="flex justify-center gap-4 mb-12">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveTab('posts')}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                activeTab === 'posts'
-                  ? 'bg-primary-500 text-white'
-                  : 'glass-effect text-gray-400 hover:text-primary-400'
-              }`}
-            >
-              <FaBlog className="inline mr-2" />
-              Blog Posts
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveTab('resources')}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                activeTab === 'resources'
-                  ? 'bg-primary-500 text-white'
-                  : 'glass-effect text-gray-400 hover:text-primary-400'
-              }`}
-            >
-              <FaBook className="inline mr-2" />
-              Resources & Journey
-            </motion.button>
-          </motion.div>
-
-          {/* Blog Posts Tab */}
-          {activeTab === 'posts' && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="space-y-6"
-            >
+          {/* Blog Posts */}
+          <motion.div
+            variants={itemVariants}
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            className="space-y-6"
+          >
               {blogPosts.map((post, index) => (
                 <motion.article
                   key={post.id}
@@ -167,115 +135,7 @@ const Blog = () => {
                   </div>
                 </motion.article>
               ))}
-            </motion.div>
-          )}
-
-          {/* Resources Tab */}
-          {activeTab === 'resources' && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="space-y-8"
-            >
-              {/* My Journey */}
-              <motion.div variants={itemVariants}>
-                <div className="flex items-center gap-3 mb-6">
-                  <FaGraduationCap className="text-3xl text-primary-400" />
-                  <h3 className="text-3xl font-bold text-gray-200">My AI & ML Journey</h3>
-                </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {resources.journey[0].links.map((link, index) => (
-                    <motion.a
-                      key={index}
-                      href={link.url}
-                      whileHover={{ scale: 1.05, y: -5 }}
-                      className="glass-effect p-6 rounded-xl border border-primary-500/20 hover:border-primary-500/50 transition-all block"
-                    >
-                      <h4 className="text-xl font-semibold text-gray-200 mb-2">{link.name}</h4>
-                      <p className="text-gray-400 text-sm">{link.description}</p>
-                    </motion.a>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* AI & ML Resources */}
-              <motion.div variants={itemVariants}>
-                <div className="flex items-center gap-3 mb-6">
-                  <FaBook className="text-3xl text-primary-400" />
-                  <h3 className="text-3xl font-bold text-gray-200">AI & ML Resources</h3>
-                </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-4">
-                  {resources.aiMl[0].links.map((link, index) => (
-                    <motion.a
-                      key={index}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05, y: -5 }}
-                      className="glass-effect p-6 rounded-xl border border-primary-500/20 hover:border-primary-500/50 transition-all block group"
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="text-xl font-semibold text-gray-200 group-hover:text-primary-400 transition-colors">
-                          {link.name}
-                        </h4>
-                        <FaExternalLinkAlt className="text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </div>
-                      <p className="text-gray-400 text-sm">{link.description}</p>
-                    </motion.a>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* Research Papers & Articles */}
-              <motion.div variants={itemVariants}>
-                <div className="flex items-center gap-3 mb-6">
-                  <FaFileAlt className="text-3xl text-primary-400" />
-                  <h3 className="text-3xl font-bold text-gray-200">Research Papers & Articles</h3>
-                </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-4">
-                  {resources.research[0].links.map((link, index) => (
-                    <motion.a
-                      key={index}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05, y: -5 }}
-                      className="glass-effect p-6 rounded-xl border border-primary-500/20 hover:border-primary-500/50 transition-all block group"
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="text-xl font-semibold text-gray-200 group-hover:text-primary-400 transition-colors">
-                          {link.name}
-                        </h4>
-                        <FaExternalLinkAlt className="text-primary-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </div>
-                      <p className="text-gray-400 text-sm">{link.description}</p>
-                    </motion.a>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* Learning Roadmap */}
-              <motion.div variants={itemVariants}>
-                <div className="flex items-center gap-3 mb-6">
-                  <FaRoute className="text-3xl text-primary-400" />
-                  <h3 className="text-3xl font-bold text-gray-200">Learning Roadmap</h3>
-                </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-4">
-                  {resources.roadmap[0].links.map((link, index) => (
-                    <motion.a
-                      key={index}
-                      href={link.url}
-                      whileHover={{ scale: 1.05, y: -5 }}
-                      className="glass-effect p-6 rounded-xl border border-primary-500/20 hover:border-primary-500/50 transition-all block"
-                    >
-                      <h4 className="text-xl font-semibold text-gray-200 mb-2">{link.name}</h4>
-                      <p className="text-gray-400 text-sm">{link.description}</p>
-                    </motion.a>
-                  ))}
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
+          </motion.div>
         </motion.div>
       </div>
     </section>

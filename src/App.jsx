@@ -35,7 +35,12 @@ function App() {
   }, [])
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen bg-dark-900">
+      {/* Debug: Test if React is rendering */}
+      <div style={{ position: 'fixed', top: 0, left: 0, zIndex: 9999, background: 'red', color: 'white', padding: '10px' }}>
+        React is working!
+      </div>
+      
       <ParticleBackground />
       <ScrollProgress />
       <Navigation activeSection={activeSection} />

@@ -109,6 +109,78 @@ const Skills = () => {
         { name: 'Linux', icon: FaLinux, level: 95 },
       ],
     },
+    {
+      title: 'Machine Learning & AI',
+      icon: FaPython,
+      skills: [
+        { name: 'PyTorch', icon: FaCode, level: 85 },
+        { name: 'TensorFlow', icon: FaCode, level: 80 },
+        { name: 'scikit-learn', icon: FaCode, level: 88 },
+        { name: 'Transformers', icon: FaCode, level: 85 },
+        { name: 'Pandas', icon: FaCode, level: 90 },
+        { name: 'NumPy', icon: FaCode, level: 90 },
+        { name: 'Matplotlib', icon: FaCode, level: 85 },
+        { name: 'Seaborn', icon: FaCode, level: 85 },
+      ],
+    },
+    {
+      title: 'Large Language Models',
+      icon: FaCode,
+      skills: [
+        { name: 'GPT Models', icon: FaCode, level: 85 },
+        { name: 'LLaMA', icon: FaCode, level: 80 },
+        { name: 'Falcon', icon: FaCode, level: 75 },
+        { name: 'Mistral', icon: FaCode, level: 75 },
+        { name: 'Hugging Face', icon: FaCode, level: 88 },
+        { name: 'LangChain', icon: FaCode, level: 85 },
+      ],
+    },
+    {
+      title: 'LLM Techniques',
+      icon: FaCode,
+      skills: [
+        { name: 'Prompt Engineering', icon: FaCode, level: 90 },
+        { name: 'Fine-tuning', icon: FaCode, level: 85 },
+        { name: 'Embeddings', icon: FaCode, level: 88 },
+        { name: 'Vector DBs (FAISS)', icon: FaCode, level: 85 },
+        { name: 'Pinecone', icon: FaCode, level: 80 },
+        { name: 'RAG', icon: FaCode, level: 88 },
+      ],
+    },
+    {
+      title: 'AI Applications',
+      icon: FaCode,
+      skills: [
+        { name: 'NLP', icon: FaCode, level: 85 },
+        { name: 'Computer Vision', icon: FaCode, level: 80 },
+        { name: 'Recommendation Systems', icon: FaCode, level: 85 },
+        { name: 'Time Series Analysis', icon: FaCode, level: 88 },
+      ],
+    },
+    {
+      title: 'ML Algorithms',
+      icon: FaCode,
+      skills: [
+        { name: 'Regression', icon: FaCode, level: 90 },
+        { name: 'Classification', icon: FaCode, level: 90 },
+        { name: 'Clustering', icon: FaCode, level: 85 },
+        { name: 'Anomaly Detection', icon: FaCode, level: 88 },
+        { name: 'Neural Networks', icon: FaCode, level: 85 },
+        { name: 'Deep Learning', icon: FaCode, level: 85 },
+      ],
+    },
+    {
+      title: 'Data Processing',
+      icon: FaCode,
+      skills: [
+        { name: 'SQL', icon: FaCode, level: 90 },
+        { name: 'Data Cleaning', icon: FaCode, level: 92 },
+        { name: 'Preprocessing', icon: FaCode, level: 90 },
+        { name: 'Feature Engineering', icon: FaCode, level: 88 },
+        { name: 'ETL Pipelines', icon: FaCode, level: 85 },
+        { name: 'Large Dataset Handling', icon: FaCode, level: 88 },
+      ],
+    },
   ]
 
   const containerVariants = {

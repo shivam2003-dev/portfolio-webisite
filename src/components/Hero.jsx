@@ -79,7 +79,13 @@ const Hero = () => {
         initial="hidden"
         animate="visible"
         className="container mx-auto px-4 relative z-10"
-        style={{ minHeight: '100vh', display: 'flex', alignItems: 'center' }}
+        style={{ 
+          minHeight: '100vh', 
+          display: 'flex', 
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%'
+        }}
       >
         <div className="text-center max-w-4xl mx-auto">
           {/* Greeting */}

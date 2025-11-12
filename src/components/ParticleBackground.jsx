@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
 
 const ParticleBackground = () => {
   const canvasRef = useRef(null)
@@ -88,12 +87,10 @@ const ParticleBackground = () => {
   }, [])
 
   return (
-    <motion.canvas
+    <canvas
       ref={canvasRef}
       className="fixed inset-0 -z-10"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 2 }}
+      style={{ opacity: 0, animation: 'fadeIn 2s forwards' }}
     />
   )
 }

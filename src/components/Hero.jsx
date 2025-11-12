@@ -6,7 +6,8 @@ import { HiOutlineMail } from 'react-icons/hi'
 const Hero = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0,
+    rootMargin: '0px',
   })
 
   const containerVariants = {
@@ -37,7 +38,7 @@ const Hero = () => {
     { icon: FaLinkedin, href: 'https://www.linkedin.com/in/shivam-kumar2003/', label: 'LinkedIn' },
     { icon: FaInstagram, href: '#', label: 'Instagram' },
     { icon: HiOutlineMail, href: 'mailto:shivam.sk2003@gmail.com', label: 'Email' },
-    { icon: FaFilePdf, href: '/Shivam_s_Resumee (2).pdf', label: 'Resume', download: true },
+    { icon: FaFilePdf, href: '/portfolio-webisite/Shivam_s_Resumee (2).pdf', label: 'Resume', download: true },
   ]
 
   return (
@@ -76,7 +77,7 @@ const Hero = () => {
         ref={ref}
         variants={containerVariants}
         initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
+        animate="visible"
         className="container mx-auto px-4 relative z-10"
       >
         <div className="text-center max-w-4xl mx-auto">

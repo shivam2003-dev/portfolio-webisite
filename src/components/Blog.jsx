@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { FaBlog, FaCalendarAlt, FaClock, FaTag, FaExternalLinkAlt, FaBook, FaGraduationCap, FaFileAlt, FaRoute } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+import { FaBlog, FaCalendarAlt, FaClock, FaTag, FaExternalLinkAlt, FaBook, FaGraduationCap, FaFileAlt, FaRoute, FaArrowRight } from 'react-icons/fa'
 import { blogPosts, resources } from '../data/blogPosts'
 import { useState } from 'react'
 
@@ -110,6 +111,17 @@ const Blog = () => {
                   whileHover={{ scale: 1.02, y: -5 }}
                   className="glass-effect p-8 rounded-xl border border-primary-500/20 hover:border-primary-500/50 transition-all"
                 >
+                  {/* Image Preview */}
+                  {post.image && (
+                    <div className="mb-6">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-64 object-cover rounded-lg"
+                      />
+                    </div>
+                  )}
+                  
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
                       <h3 className="text-3xl font-bold text-gray-200 mb-3">
@@ -132,7 +144,7 @@ const Blog = () => {
                       <p className="text-lg text-gray-300 mb-4 leading-relaxed">
                         {post.excerpt}
                       </p>
-                      <div className="flex flex-wrap gap-2 mb-4">
+                      <div className="flex flex-wrap gap-2 mb-6">
                         {post.tags.map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
@@ -142,35 +154,16 @@ const Blog = () => {
                           </span>
                         ))}
                       </div>
+                      
+                      {/* Read More Button */}
+                      <Link
+                        to={`/blog/${post.slug}`}
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg font-semibold text-white hover:from-primary-400 hover:to-primary-500 transition-all"
+                      >
+                        Read Full Article
+                        <FaArrowRight />
+                      </Link>
                     </div>
-                  </div>
-                  
-                  {/* Blog Content */}
-                  <div className="mt-6 text-gray-300 leading-relaxed">
-                    {post.content.split('\n').map((line, lineIndex) => {
-                      const trimmed = line.trim()
-                      if (trimmed.startsWith('# ')) {
-                        return <h1 key={lineIndex} className="text-3xl font-bold text-gray-200 mt-6 mb-4">{trimmed.substring(2)}</h1>
-                      }
-                      if (trimmed.startsWith('## ')) {
-                        return <h2 key={lineIndex} className="text-2xl font-bold text-gray-200 mt-5 mb-3">{trimmed.substring(3)}</h2>
-                      }
-                      if (trimmed.startsWith('### ')) {
-                        return <h3 key={lineIndex} className="text-xl font-semibold text-gray-200 mt-4 mb-2">{trimmed.substring(4)}</h3>
-                      }
-                      if (trimmed.startsWith('```')) {
-                        return null // Skip code block markers for now
-                      }
-                      if (trimmed && !trimmed.startsWith('```')) {
-                        // Simple markdown parsing
-                        let processedLine = trimmed
-                        processedLine = processedLine.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-primary-400">$1</strong>')
-                        processedLine = processedLine.replace(/`(.*?)`/g, '<code class="bg-dark-800 px-2 py-1 rounded text-primary-400 font-mono text-sm">$1</code>')
-                        processedLine = processedLine.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-primary-400 hover:underline">$1</a>')
-                        return <p key={lineIndex} className="mb-3" dangerouslySetInnerHTML={{ __html: processedLine }} />
-                      }
-                      return <br key={lineIndex} />
-                    })}
                   </div>
                 </motion.article>
               ))}

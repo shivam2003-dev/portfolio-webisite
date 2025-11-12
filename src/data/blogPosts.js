@@ -1,9 +1,11 @@
 export const blogPosts = [
   {
     id: 1,
+    slug: 'why-momentum-really-works',
     title: 'Why Momentum Really Works',
     date: '2025-11-12',
     excerpt: 'A simplified explanation of how momentum optimization accelerates gradient descent and why it works so effectively.',
+    image: null, // Add image URL here, e.g., '/images/momentum.png'
     content: `
 # Why Momentum Really Works
 
